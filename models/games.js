@@ -6,8 +6,8 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
 
-        genre: {
-            type: DataTypes.STRING,
+        max_time: {
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
 

@@ -6,9 +6,9 @@
                 <ul class="grey lighten-1">
 
                     {{#each game}}
-                    {{#if this.owned}}
+                    {{#if this.dataValues.owned_requested}}
                     <li class="grey lighten-1">
-                        {{this.name}}<a data-id="{{this.id}}" class="delete right waves-effect waves-red btn-flat delete">DELETE</a>
+                        {{this.dataValues.name}}<a data-id="{{this.dataValues.id}}" class="delete right waves-effect waves-red btn-flat delete">DELETE</a>
                     </li><br>
                     {{/if}}
                     {{/each}}
@@ -18,9 +18,9 @@
                 <p class="gametext">Requested Games</p>
                 <ul class="grey">
                     {{#each game}}
-                    {{#unless this.owned}}
+                    {{#unless this.dataValues.owned_requested}}
                     <li class="grey">
-                        {{this.name}}<a data-id="{{this.id}}" class="delete right waves-effect waves-red btn-flat delete">DELETE</a>
+                        {{this.dataValues.name}}<a data-id="{{this.dataValues.id}}" class="delete right waves-effect waves-red btn-flat delete">DELETE</a>
                     </li><br>
                     {{/unless}}
                     {{/each}}

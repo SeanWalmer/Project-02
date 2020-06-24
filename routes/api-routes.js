@@ -31,6 +31,17 @@ module.exports = function(app) {
     req.logout();
     res.redirect("/");
   });
+//   /:name/:time/:players/:type/:userID
+  app.get("/api/new/:name/:time/:players/:type/:userID", function(req, res) {
+      db.Games.create({
+        name: req.params.name,
+        max_time: req.params.time,  
+        number_of_players: req.params.players,
+        owned_requested: req.params.type,
+        userID: req.params.userID
+      })
+  });
+
 
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
