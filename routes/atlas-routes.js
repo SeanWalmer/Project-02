@@ -13,12 +13,13 @@ const apiSearch = async (title) =>
 
 module.exports = app => {
     // Returns list of games matching given string
-    app.get("/atlas/list", async (req, res) => {
-        res.json((await apiSearch(req.body.title)).games.map(x => x.name));
+    app.get("/atlas/list/:title", async (req, res) => {
+        res.json((await apiSearch(req.params.title)).games.map(x => x.name));
+        // res.json((await apiSearch(req.body.title)).games.map(x => x.name));
     });
 
     // Returns detailed information for game with given title
-    app.get("/atlas/info", async (req, res) => {
+    app.post("/atlas/info/", async (req, res) => {
         res.json((await apiSearch(req.body.title)).games.filter(x => x.name === req.body.title));
     });
 };

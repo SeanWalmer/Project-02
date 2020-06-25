@@ -19,4 +19,7 @@ h2 {
 .nudge {
     position: relative;
     top: 18px;
-  }
+}
+.minW {
+    min-width: 500px;
+}

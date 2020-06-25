@@ -32,16 +32,15 @@ module.exports = function(app) {
     res.redirect("/");
   });
 //   /:name/:time/:players/:type/:userID
-  app.get("/api/new/:name/:time/:players/:type/:userID", function(req, res) {
+  app.post("/api/new/", function(req, res) {
       db.Games.create({
-        name: req.params.name,
-        max_time: req.params.time,  
-        number_of_players: req.params.players,
-        owned_requested: req.params.type,
-        userID: req.params.userID
+        name: req.body.name,
+        max_time: req.body.time,  
+        number_of_players: req.body.players,
+        owned_requested: req.body.type,
+        userID: req.body.userID
       })
   });
-
 
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
@@ -57,4 +56,14 @@ module.exports = function(app) {
       });
     }
   });
+
+  app.delete("/api/delete/:id", function(req, res) {
+      db.Games.destroy({
+          where: {
+              id: req.params.id
+          }
+      }).then(function(dbGames) {
+          res.json(dbGames);
+      })
+  })
 };
